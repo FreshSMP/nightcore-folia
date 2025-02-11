@@ -30,6 +30,11 @@ public class NightTask {
     }
 
     @NotNull
+    public static NightTask createAsync(@NotNull NightCorePlugin plugin, @NotNull Runnable runnable, int interval) {
+        return createAsync(plugin, runnable, TimeUtil.secondsToTicks(interval));
+    }
+
+    @NotNull
     public static NightTask createAsync(@NotNull NightCorePlugin plugin, @NotNull Runnable runnable, long interval) {
         return createTask(plugin, () -> {
             if (interval <= 0) return null;
